@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<main>
+    <form action="/signup" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" required>
+
+        <label for="native-language">Native Language:</label>
+        <select id="native-language" name="native_language" required>
+            <option value="English">English</option>
+            <option value="German">German</option>
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Italian">Italian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Other">Other</option>
+
+        </select>
+
+        <fieldset>
+            <legend>Goals:</legend>
+            <label><input type="radio" name="goals" value="Travel"> Travel</label>
+            <label><input type="radio" name="goals" value="Work"> Work</label>
+            <label><input type="radio" name="goals" value="Interest"> Interest</label>
+            <label><input type="radio" name="goals" value="Other"> Other</label>
+
+        </fieldset>
+
+        <label for="target-language">Target Language:</label>
+        <select id="target-language" name="target_language" required>
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Dutch">Dutch</option>
+            <option value="Swedish">Swedish</option>
+
+        </select>
+
+        <label for="proficiency-level">Current Proficiency Level:</label>
+        <select id="proficiency-level" name="proficiency_level" required>
+            <option value="A1-Beginner">A1-Beginner</option>
+            <option value="A2-Elementary">A2-Elementary</option>
+            <option value="B1-Intermediate">B1-Intermediate</option>
+            <option value="B2-Upper Intermediate">B2-Upper Intermediate</option>
+            <option value="C1-Advanced">C1-Advanced</option>
+
+
+        </select>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, one special character, and at least 8 or more characters" required>
+
+        <input type="submit" value="Sign Up">
+    </form>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle the form submission
+            $("form#registration-form").submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Collect form data
+                var formData = {
+                    username: $("#username").val(),
+                    age: $("#age").val(),
+                    native_language: $("#native-language").val(),
+                    goals: $("input[name='goals']:checked").map(function() {
+                        return $(this).val();
+                    }).get(),
+                    target_language: $("#target-language").val(),
+                    proficiency_level: $("#proficiency-level").val(),
+                    password: $("#password").val()
+                };
+
+                // Send a POST request to the Flask endpoint
+                $.ajax({
+                    type: "POST",
+                    url: "/signup",
+                    data: JSON.stringify(formData),
+                    contentType: "application/json",
+                    success: function(response) {
+                        if (response.status === "success") {
+                            // Registration successful, redirect to login page
+                            window.location.href = "/signin";
+                        } else {
+                            // Registration failed, display an error message
+                            $("#registration-status").text(response.message);
+                        }
+                    },
+                    error: function() {
+                        // Handle AJAX error
+                        $("#registration-status").text("An error occurred during registration.");
+                    }
+                });
+            });
+        });
+    </script>
+
+    <p>Already have an account? <a href="/signin">Sign In</a></p> <!-- Provide a link to the sign-in page -->
+</main>
+</body>
+</html>

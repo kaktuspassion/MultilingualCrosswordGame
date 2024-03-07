@@ -1,0 +1,94 @@
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to right top, #f0fd9d, #b7fbb2, #83f4cf, #60e8e9, #65d9f8, #81d1ff, #9fc9fd, #bac0f4, #d3c1f0, #e7c3ea, #f5c7e2, #ffcddc);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+main {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+fieldset label {
+    font-weight: normal;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+p {
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}

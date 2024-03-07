@@ -1,0 +1,137 @@
+html, body {
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to right top, #f0fd9d, #b7fbb2, #83f4cf, #60e8e9, #65d9f8, #81d1ff, #9fc9fd, #bac0f4, #d3c1f0, #e7c3ea, #f5c7e2, #ffcddc);
+}
+
+.header {
+    height: 100px;
+    width: 90%;
+    margin: 30px auto;
+    background-color: #e4e0f8;
+    border-radius: 20px;
+    box-shadow: 0 -2px 5px #dfd9f7(0.2, 0.2, 0.2, 0.2);
+}
+
+h1 {
+    float: left;
+    margin-left: 20px;
+}
+
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin: 20px 20px;
+    height: 60px;
+    font-size: 30px;
+    color: #2A78FF;
+    font-weight: bold;
+    font-family: Impact, fantasy;
+    z-index: 2
+}
+
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    margin: 35px 40px;
+    height: 30px;
+    font-size: 20px;
+    color: #2A78FF;
+    font-weight: bold;
+    position: relative; 
+    z-index: 2;
+}
+
+.contact a {
+    text-decoration: none;
+}
+
+.contact a:visited {
+    color: #2A78FF; 
+}
+
+.contact:hover {
+    border-bottom: 2px solid #00a4ff;
+}
+
+
+.left-panel {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    width: 50%; 
+    height: 100vh; 
+    padding-left: 10%; 
+    box-sizing: border-box; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    z-index: 2;
+}
+
+.content h2{
+    font-family: 'Roboto', sans-serif; 
+    font-size: 50px;
+    color: #2A2BFF;
+}
+
+.content p{
+    font-size: 20px;
+    color: #2A2BFF;
+}
+
+.left-panel .action-buttons button {
+    background-image: linear-gradient(135deg, #6D83F2, #A6E3E9); /* 渐变背景颜色 */
+    border: none; 
+    border-radius: 20px; 
+    color: white; 
+    cursor: pointer; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: 16px; 
+    margin-right: 10px;
+    padding: 15px 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    text-transform: uppercase; 
+}
+
+.left-panel .action-buttons button:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); 
+    background-image: linear-gradient(135deg, #92C0F3, #a59dfd, #FFCDDC); 
+}
+
+#cube-container {
+    display: flex;
+    justify-content: center;
+    position: fixed; /* or 'absolute' if you prefer relative to the nearest positioned ancestor */
+    top: 0;
+    right: 0;
+    width: 55%; /* takes up the right half of the screen */
+    height: 100vh; /* full height of the viewport */
+    z-index: 1;
+}
+
+
+/* footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    background-color: #8cb5de;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    
+}

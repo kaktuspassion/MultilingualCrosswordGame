@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='signin.css') }}">
+    <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <h1>Welcome Back!</h1>
+        <form action="/signin" method="post">
+            <!-- Username Field -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <!-- Password Field -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Sign In">
+        </form>
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p> <!-- Provide a link to the sign-up page -->
+    </main>
+</body>
+</html>

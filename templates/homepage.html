@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordWizard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}"> 
+    <link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- navigation bar -->
+        <header>
+            <div class="header">
+                <!-- cube logo -->
+                <h1>
+                    <a href="#"><img src="../static/image/cube.jpeg" alt="cube" style="width: 50px; height: auto;"></a>
+                </h1>
+                <!-- title and contact -->
+                <div class="nav">WORD WIZARD</div>
+                <div class="contact">
+                    <a href="mailto:haonan.chen@gmail.com">Contact us</a>
+                </div>
+            </div>
+        </header>
+        <!-- slogan, signin and signup -->
+        <main>
+            <div class="left-panel">
+                <div class="content">
+                    <h2>Let's Play, Let's Learn</h2>
+                    <p>Your Journey Through Languages Begins Here.</p>
+                    <div class="action-buttons">
+                        <button onclick="location.href='/signin'">Login</button>
+                        <button onclick="location.href='/signup'">Register</button>
+                        <button onclick="location.href='/crossword'">Play Crossword Puzzle</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <aside id="cube-container">
+        </aside>
+        <!-- footer -->
+        <footer>
+            <p>A naive crossword game for multilingual learners. Final project of LTWA 2023 Fall. </p>
+        </footer>
+    </div>
+    <script>
+        // Scene
+        const scene = new THREE.Scene();
+
+        // Camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(3, 3, 5);
+        camera.lookAt(scene.position);
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setClearColor(0x000000, 0); // the second parameter is the opacity, 0 is fully transparent
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('cube-container').appendChild(renderer.domElement);
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+
+        // Materials
+        const materials = [
+            new THREE.MeshBasicMaterial({ color: 0xFF9A6C }), // orange
+            new THREE.MeshBasicMaterial({ color: 0xFFE36C }), // yellow
+            new THREE.MeshBasicMaterial({ color: 0xFFFEF3 }), // green
+            new THREE.MeshBasicMaterial({ color: 0x6DAAFA }), // blue
+            new THREE.MeshBasicMaterial({ color: 0xcccbf5 }), // purple
+            new THREE.MeshBasicMaterial({ color: 0xffcddc }), // pink
+        ];
+
+        // Geometry
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+        // Creating cube segments and adding them to the scene
+        const cubeSize = 1;
+        const spacing = 0.1;
+        for (let x = 0; x < 3; x++) {
+            for (let y = 0; y < 3; y++) {
+                for (let z = 0; z < 3; z++) {
+                    // Create a cube and apply the materials
+                    const cube = new THREE.Mesh(geometry, materials);
+                    // Offset each cube by its size and a little extra to give spacing
+                    cube.position.x = (x - 1) * (cubeSize + spacing);
+                    cube.position.y = (y - 1) * (cubeSize + spacing);
+                    cube.position.z = (z - 1) * (cubeSize + spacing);
+                    scene.add(cube);
+                }
+            }
+        }
+
+        // Animation loop
+        const animate = () => {
+            requestAnimationFrame(animate);
+            
+            // Rotating the entire scene to simulate a rotating cube
+            scene.rotation.x += 0.01;
+            scene.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>        
+    
+</body>
+</html>

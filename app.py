@@ -1,3 +1,4 @@
+import os
 import traceback
 from flask import request, jsonify, render_template, redirect, url_for, flash
 from data_process import load_processed_data, select_word_clue_list
@@ -6,11 +7,17 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from register import db, User
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 app.secret_key = 'word_wizard_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://owner:zzOLhqcSDrGiuULmLtYa@172.23.49.21:5048/example_project_6711'
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///default.db')
+DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://owner:zzOLhqcSDrGiuULmLtYa@172.23.49.21:5048/example_project_6711'
+
+db = SQLAlchemy(app)
 
 def create_app():
     db.init_app(app)

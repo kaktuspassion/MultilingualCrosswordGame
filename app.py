@@ -10,23 +10,27 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 
-app = Flask(__name__)
-app.secret_key = 'word_wizard_secret_key'
-DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///default.db')
-DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://owner:zzOLhqcSDrGiuULmLtYa@172.23.49.21:5048/example_project_6711'
-
-db = SQLAlchemy(app)
-
 def create_app():
-    db.init_app(app)
+    app = Flask(__name__)
+    app.secret_key = 'word_wizard_secret_key'
+    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///default.db')
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    db.init_app(app)  # 使用db.init_app注册SQLAlchemy实例到Flask应用
+    
     with app.app_context():
-        # create tables if they don't exist, etc.
-        db.create_all()
+        db.create_all()  # 创建数据库表格
+
+    # 定义路由和视图函数...
+    
     return app
 
 app = create_app()
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 # Load and process data for each language

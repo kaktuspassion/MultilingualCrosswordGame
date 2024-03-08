@@ -5,27 +5,31 @@ from data_process import load_processed_data, select_word_clue_list
 from crossword_generator import generate_crossword
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from register import db, User
+from register import db
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
+# 初始化 SQLAlchemy
+db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
     app.secret_key = 'word_wizard_secret_key'
-    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///default.db')
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///default.db').replace("postgres://", "postgresql://", 1)
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    
-    db.init_app(app)  # 使用db.init_app注册SQLAlchemy实例到Flask应用
-    
-    with app.app_context():
-        db.create_all()  # 创建数据库表格
 
-    # 定义路由和视图函数...
-    
+    db.init_app(app)  # 注册 SQLAlchemy 实例到 Flask 应用
+
+    migrate = Migrate(app, db)  # 初始化 Flask-Migrate
+
+    # 在这里注册你的蓝图或定义路由
+
     return app
+
+# 从这里导入需要使用db对象的模块，例如模型定义，以避免循环依赖
+from register import User
 
 app = create_app()
 

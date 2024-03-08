@@ -9,6 +9,7 @@ click==8.1.7
 cloudpathlib==0.16.0
 confection==0.1.4
 cymem==2.0.8
+Cython==3.0.9
 exceptiongroup==1.2.0
 fastenum==1.0.4
 Flask==2.3.2
@@ -38,7 +39,7 @@ pluggy==1.3.0
 preshed==3.0.9
 psycopg2==2.9.9
 pydantic==1.8.2
-pydantic_core==2.14.6
+pydantic_core==2.16.3
 pytest==7.4.4
 python-dateutil==2.8.2
 python-Levenshtein==0.12.0
@@ -47,16 +48,16 @@ regex==2023.12.25
 requests==2.31.0
 six==1.16.0
 smart-open==6.4.0
-spacy==3.2.6
+spacy==3.7.4
 spacy-legacy==3.0.12
 spacy-loggers==1.0.5
-SQLAlchemy==2.0.25
+SQLAlchemy==2.0.28
 srsly==2.4.8
-thinc==8.0.17
+thinc==8.2.3
 tomli==2.0.1
 tqdm==4.66.1
 typer==0.4.2
-typing_extensions==4.9.0
+typing_extensions==4.10.0
 tzdata==2023.4
 urllib3==2.1.0
 wasabi==0.10.1

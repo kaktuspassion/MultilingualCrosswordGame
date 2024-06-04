@@ -40,15 +40,15 @@ The website consists of homepage, registration and login interface and game page
 
 1. Homepage:
 
-![homepage_design](/Users/ninachen/Desktop/PersonalWebsite/astrofy/public/project_wordwizard/homepage_design.png)
+![My Local Image](/public/homepage_design.png)
 
 2. Game page
 
-![crossword_design](/Users/ninachen/Desktop/PersonalWebsite/astrofy/public/project_wordwizard/crossword_design.png)
+![My Local Image](/public/crossword_design.png)
 
 3. Sign-in and sign-up
 
-![sign-in-up](/Users/ninachen/Desktop/PersonalWebsite/astrofy/public/project_wordwizard/sign-in-up.png)
+![My Local Image](/public/sign-in-up.png)
 
 ## Technologies
 

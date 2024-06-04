@@ -59,6 +59,9 @@ The website consists of homepage, registration and login interface and game page
 
 ## References
 [1] CEFRLex: Common European Framework of Reference for Languages (CEFR) scale. <cental.uclouvain.be/cefrlex/ > 
+
 [2] WordNet: A Lexical Database for English. <wordnet.princeton.edu/ >
+
 [3] OMW: Open Multilingual Wordnet. <mwn.org>
+
 [4] https://github.com/jeremy886/crossword_helmig

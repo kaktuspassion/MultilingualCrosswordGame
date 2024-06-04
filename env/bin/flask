@@ -1,4 +1,4 @@
-#!/Users/jing/Desktop/LTWA_WordWizard/env/bin/python
+#!/Users/ninachen/Desktop/Crossword/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

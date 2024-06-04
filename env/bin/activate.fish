@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/jing/Desktop/LTWA_WordWizard/env"
+set -gx VIRTUAL_ENV "/Users/ninachen/Desktop/Crossword/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
